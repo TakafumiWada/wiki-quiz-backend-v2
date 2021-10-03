@@ -13,8 +13,11 @@ app.use(
   }
 );
 
-app.listen(3000, () => {
-  console.log("Start on port http://localhost:3000/");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.listen(8888, () => {
+  console.log("Start on port http://localhost:8888/");
 });
 
 type User = {
