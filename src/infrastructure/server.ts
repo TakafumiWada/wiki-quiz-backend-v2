@@ -1,4 +1,6 @@
 import express from "express";
+import router from "./router";
+
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,6 +17,8 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/v2/", router);
 
 app.listen(8888, () => {
   console.log("Start on port http://localhost:8888/");

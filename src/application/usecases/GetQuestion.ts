@@ -1,17 +1,19 @@
 import { IQuestion, Question } from "../../domain/models/Question";
+import { IQuestionApi } from "../apiInterface/IQuestionApi";
 
 export class GetQuestion {
-  private fetchQuestion: () => Promise<IQuestion>;
+  private questionApi: IQuestionApi;
   private limit: number;
 
-  constructor(fetchQuestion: () => Promise<IQuestion>, limit: number) {
-    this.fetchQuestion = fetchQuestion;
+  constructor(questionApi: IQuestionApi, limit: number) {
+    this.questionApi = questionApi;
     this.limit = limit;
   }
 
   async execute(): Promise<IQuestion> {
     for (let i = 0; i < this.limit; i++) {
-      const data = await this.fetchQuestion();
+      console.log(i);
+      const data = await this.questionApi.fetchQuestion();
       const question = new Question(data);
       if (question.isValid()) return question;
     }
