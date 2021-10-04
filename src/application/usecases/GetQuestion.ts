@@ -12,7 +12,6 @@ export class GetQuestion {
 
   async execute(): Promise<IQuestion> {
     for (let i = 0; i < this.limit; i++) {
-      console.log(i);
       const data = await this.questionApi.fetchQuestion();
       const question = new Question(data);
       if (question.isValid()) return question;
