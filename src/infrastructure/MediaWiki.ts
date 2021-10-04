@@ -1,6 +1,6 @@
 import wikiApi from "wikijs";
 import { MEDIAWIKI_API_URL } from "../config";
-import { WikiJS } from "./types";
+import { WikiJS } from "../interfaces/types";
 import { IMediaWikiApi } from "../interfaces/externalApi/IMediaWikiApi";
 
 type UserAgent = Record<string, string>;
