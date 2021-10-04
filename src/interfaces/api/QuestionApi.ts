@@ -19,4 +19,9 @@ export class QuestionApi implements IQuestionApi {
       url: page.url(),
     };
   }
+
+  async searchTitle(word: string): Promise<string> {
+    const result = await this.wikiJs.search(word);
+    return result.results[0];
+  }
 }

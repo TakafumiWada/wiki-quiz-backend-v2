@@ -15,3 +15,8 @@ export type WikiJS = {
   allCategories(): Promise<string[]>;
   pagesInCategory(category: string): Promise<string[]>;
 };
+
+export type ConfirmRequest = {
+  searchWord: string;
+  answer: string;
+};
