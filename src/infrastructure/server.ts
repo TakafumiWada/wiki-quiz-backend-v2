@@ -2,6 +2,8 @@ import express from "express";
 import router from "./router";
 import cors from "cors";
 
+const port = process.env.PORT || 8888;
+
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,6 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/v2/", router);
 
 // Listen
-app.listen(8888, () => {
-  console.log("Start on port http://localhost:8888/");
+app.listen(port, () => {
+  console.log(`Start on port http://localhost:${port}/`);
 });
