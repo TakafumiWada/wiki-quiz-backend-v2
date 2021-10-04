@@ -1,42 +1,30 @@
 import express from "express";
 import router from "./router";
+import cors from "cors";
 
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//TODO: CORS を後で変更
-app.use(
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-  }
-);
+// CORS
+const corsOptions = {
+  origin: [
+    "https://www.quiz-wiki.com",
+    "https://wiki-quiz-frontend-dev.an.r.appspot.com/",
+    "http://localhost:3000",
+  ],
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
+// BodyParse
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Router
 app.use("/v2/", router);
 
+// Listen
 app.listen(8888, () => {
   console.log("Start on port http://localhost:8888/");
-});
-
-type User = {
-  id: number;
-  name: string;
-  email: string;
-};
-
-const users: User[] = [
-  { id: 1, name: "User1", email: "user1@test.local" },
-  { id: 2, name: "User2", email: "user2@test.local" },
-  { id: 3, name: "User3", email: "user3@test.local" },
-];
-
-//一覧取得
-app.get("/users", (req: express.Request, res: express.Response) => {
-  res.send(JSON.stringify(users));
 });
