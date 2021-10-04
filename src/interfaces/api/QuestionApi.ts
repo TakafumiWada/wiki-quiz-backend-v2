@@ -1,4 +1,4 @@
-import { WikiJS } from "../../infrastructure/types";
+import { WikiJS } from "../types";
 import { IQuestion } from "../../domain/models/Question";
 import { IQuestionApi } from "../../application/apiInterface/IQuestionApi";
 
