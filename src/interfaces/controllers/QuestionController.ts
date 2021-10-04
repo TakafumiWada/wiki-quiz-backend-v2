@@ -7,6 +7,7 @@ import { QuestionApi } from "../api/QuestionApi";
 import { IQuestionApi } from "../../application/apiInterface/IQuestionApi";
 import { ConfirmRequest } from "../types";
 import { ConfirmQuestion } from "../../application/usecases/ConfirmQuestion";
+import { QuestionSerializer } from "../serializers/QuestionSerializer";
 
 export class QuestionController {
   private questionApi: IQuestionApi;
@@ -18,7 +19,9 @@ export class QuestionController {
 
   async getQuestion(): Promise<IQuestion> {
     const useCase = new GetQuestion(this.questionApi, LIMIT_ACCESS);
-    return useCase.execute();
+    const question = await useCase.execute();
+    const questionSerializer = new QuestionSerializer();
+    return questionSerializer.getQuestionSerialize(question);
   }
 
   async confirmQuestion(req: Request): Promise<boolean> {
