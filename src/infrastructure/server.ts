@@ -14,6 +14,7 @@ const corsOptions = {
     "https://www.quiz-wiki.com",
     "https://wiki-quiz-frontend-dev.an.r.appspot.com/",
     "http://localhost:3000",
+    "http://localhost:8080",
   ],
   optionsSuccessStatus: 200,
 };
