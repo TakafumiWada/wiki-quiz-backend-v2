@@ -15,7 +15,7 @@ export class QuestionApi implements IQuestionApi {
       title,
       categories: await page.categories(),
       words: await page.links(),
-      images: await page.mainImage(),
+      image: await page.mainImage(),
       url: page.url(),
     };
   }

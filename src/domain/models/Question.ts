@@ -4,7 +4,7 @@ export interface IQuestion {
   title: string;
   categories: Array<string>;
   words: Array<string>;
-  images: string;
+  image: string;
   url: string;
 }
 
@@ -12,14 +12,14 @@ export class Question implements IQuestion {
   title: string;
   categories: Array<string>;
   words: Array<string>;
-  images: string;
+  image: string;
   url: string;
 
   constructor(question: IQuestion) {
     this.title = question.title;
     this.categories = question.categories;
     this.words = question.words;
-    this.images = question.images;
+    this.image = question.image;
     this.url = question.url;
   }
 
@@ -35,7 +35,7 @@ export class Question implements IQuestion {
       title: this.title,
       categories: this.categories,
       words: this.words,
-      images: this.images,
+      image: this.image,
       url: this.url,
     };
   }
