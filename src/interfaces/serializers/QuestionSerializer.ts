@@ -23,7 +23,8 @@ export class QuestionSerializer {
     quesion.categories = randomSelect(
       quesion.categories,
       SELECTED_CATEGORIES_NUMBER
-    );
+    ).map((category) => category.replace("Category:", ""));
+
     return quesion;
   }
 }
